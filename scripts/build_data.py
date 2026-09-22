@@ -65,4 +65,28 @@ for path in sorted(POSTS_DIR.glob("*.html")):
 DATA_DIR.joinpath("posts.json").write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding="utf-8")
 # Compatibility copy for older URLs/tools.
 ROOT.joinpath("pesquisa.json").write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding="utf-8")
-print(f"Gerados {len(records)} registos.")
+
+# Keep the sitemap in sync with the actual post files.
+sitemap = ROOT / "sitemap.xml"
+urls = [
+    "https://nelsondeoliveira.netlify.app/",
+    "https://nelsondeoliveira.netlify.app/arquivo.html",
+    "https://nelsondeoliveira.netlify.app/arquivo_vivo.html",
+    "https://nelsondeoliveira.netlify.app/temas.html",
+    "https://nelsondeoliveira.netlify.app/cronologia.html",
+    "https://nelsondeoliveira.netlify.app/evolucao.html",
+    "https://nelsondeoliveira.netlify.app/historia.html",
+    "https://nelsondeoliveira.netlify.app/dialogos.html",
+    "https://nelsondeoliveira.netlify.app/pesquisa.html",
+    "https://nelsondeoliveira.netlify.app/essenciais.html",
+    "https://nelsondeoliveira.netlify.app/catalogo.html",
+    "https://nelsondeoliveira.netlify.app/sobre.html",
+]
+urls += ["https://nelsondeoliveira.netlify.app/temas/" + t["slug"] + ".html" for t in themes]
+urls += ["https://nelsondeoliveira.netlify.app" + r["url"] for r in records]
+xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+xml += [f"  <url><loc>{u}</loc></url>" for u in sorted(set(urls))]
+xml.append("</urlset>")
+sitemap.write_text("\n".join(xml) + "\n", encoding="utf-8")
+
+print(f"Gerados {len(records)} registos e {len(set(urls))} URLs no sitemap.")
