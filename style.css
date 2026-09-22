@@ -782,3 +782,213 @@ footer{
   .selection-card{min-height:210px}
   .home-closing{padding:64px 0 74px}
 }
+
+
+/* v3.0 — internal pages */
+.dialogues{
+  max-width:1000px;
+  padding:58px 0 112px;
+}
+.dialogue-pair{
+  padding:30px 0 34px;
+  border-top:1px solid var(--line);
+}
+.dialogue-meta{
+  margin-bottom:18px;
+  font:800 9px/1.3 var(--sans);
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--muted);
+}
+.dialogue-links{
+  display:grid;
+  grid-template-columns:1fr 50px 1fr;
+  align-items:center;
+  gap:22px;
+}
+.dialogue-links a{
+  min-height:120px;
+  padding:22px 24px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.dialogue-links a:hover{
+  transform:translateY(-2px);
+  border-color:#aaa196;
+  box-shadow:0 10px 26px rgba(24,20,15,.06);
+}
+.dialogue-links strong{
+  font:700 25px/1.08 var(--serif);
+  letter-spacing:-.025em;
+}
+.dialogue-links span{
+  margin-top:18px;
+  font:700 9px/1 var(--sans);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+}
+.dialogue-arrow{
+  text-align:center;
+  font:400 28px/1 var(--serif);
+  color:var(--accent);
+}
+
+.essentials-grid{
+  padding:55px 0 110px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;
+  background:var(--line);
+}
+.essential-card{
+  min-height:285px;
+  padding:30px;
+  background:var(--paper);
+  display:flex;
+  flex-direction:column;
+  transition:background .18s ease,transform .18s ease;
+}
+.essential-card:hover{
+  background:#fdfcf8;
+  transform:translateY(-2px);
+}
+.essential-card h2{
+  margin:12px 0 12px;
+  font-size:31px;
+  line-height:1.03;
+}
+.essential-card p{
+  margin:0;
+  max-width:470px;
+  color:#625d56;
+  font:400 16px/1.55 var(--serif);
+}
+.essential-card .read-link{margin-top:auto}
+
+.catalog{
+  padding:55px 0 110px;
+}
+.catalog-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;
+  background:var(--line);
+}
+.catalog-card{
+  min-height:280px;
+  padding:26px;
+  background:var(--paper);
+  display:flex;
+  flex-direction:column;
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.catalog-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(24,20,15,.06);
+}
+.catalog-card h2{
+  margin:10px 0 10px;
+  font-size:28px;
+  line-height:1.05;
+}
+.catalog-card p{
+  margin:0;
+  color:#625d56;
+  font:400 15px/1.5 var(--serif);
+  display:-webkit-box;
+  -webkit-line-clamp:7;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.catalog-tags{
+  margin-top:auto;
+  padding-top:20px;
+  font:700 9px/1.45 var(--sans);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--muted);
+}
+.catalog-meta{
+  font:700 9px/1 var(--sans);
+  text-transform:uppercase;
+  letter-spacing:.13em;
+  color:var(--muted);
+}
+
+.history-page{
+  max-width:900px;
+}
+.history-block{
+  padding:38px 0;
+  border-top:1px solid var(--line);
+}
+.history-block h2{
+  margin:0 0 13px;
+  font-size:34px;
+  line-height:1.05;
+}
+.history-block p{
+  max-width:760px;
+  margin:0;
+  color:#5c574f;
+  font:400 19px/1.65 var(--serif);
+}
+
+.timeline{
+  margin:34px 0 75px;
+}
+.timeline-row{
+  display:grid;
+  grid-template-columns:150px 1fr;
+  gap:38px;
+  padding:28px 0;
+  border-top:1px solid var(--line);
+}
+.timeline-row>strong{
+  font:800 10px/1.3 var(--sans);
+  text-transform:uppercase;
+  letter-spacing:.13em;
+  color:var(--accent);
+}
+.timeline-row b{
+  font:700 14px/1.3 var(--sans);
+}
+.timeline-row ul{
+  padding-left:18px;
+}
+.timeline-row li{
+  padding:5px 0;
+  font:400 17px/1.4 var(--serif);
+}
+.timeline-row small{
+  color:var(--muted);
+  font:700 9px var(--sans);
+  letter-spacing:.08em;
+}
+
+.archive-hero .note-box,
+.page-head .note-box{
+  max-width:820px;
+}
+.page-head .note-box{
+  margin-top:28px;
+}
+
+@media(max-width:980px){
+  .essentials-grid,.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dialogue-links{grid-template-columns:1fr}
+  .dialogue-arrow{transform:rotate(90deg);height:20px}
+}
+@media(max-width:700px){
+  .essentials-grid,.catalog-grid{grid-template-columns:1fr}
+  .dialogues{padding:40px 0 80px}
+  .dialogue-links a{min-height:105px;padding:20px}
+  .dialogue-links strong{font-size:22px}
+  .timeline-row{grid-template-columns:1fr;gap:8px}
+  .history-block p{font-size:18px}
+}
