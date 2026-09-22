@@ -62,6 +62,20 @@ for path in sorted(POSTS_DIR.glob("*.html")):
         "type": article_type
     })
 
+# Remove references to deleted posts from the manual theme map on every rebuild.
+existing_urls = {r["url"] for r in records}
+cleaned_themes = []
+for theme in themes:
+    cleaned = dict(theme)
+    cleaned["urls"] = [u for u in theme.get("urls", []) if u in existing_urls]
+    cleaned_themes.append(cleaned)
+themes = cleaned_themes
+
+DATA_DIR.joinpath("themes.json").write_text(
+    json.dumps(themes, ensure_ascii=False, indent=2),
+    encoding="utf-8"
+)
+
 DATA_DIR.joinpath("posts.json").write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding="utf-8")
 # Compatibility copy for older URLs/tools.
 ROOT.joinpath("pesquisa.json").write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding="utf-8")
