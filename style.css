@@ -992,3 +992,30 @@ footer{
   .timeline-row{grid-template-columns:1fr;gap:8px}
   .history-block p{font-size:18px}
 }
+
+
+/* v3.1 — navigation on small screens */
+@media(max-width:700px){
+  header{position:sticky}
+  .nav{
+    display:block;
+    padding-top:17px;
+    padding-bottom:13px;
+  }
+  .brand{display:block;margin-bottom:14px}
+  nav{
+    width:100%;
+    max-width:none;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    gap:0 18px;
+    overflow:visible;
+  }
+  nav a{
+    padding:4px 0 6px;
+    border-bottom:1px solid transparent;
+    font-size:9px;
+  }
+  nav a:hover{border-bottom-color:var(--accent)}
+}
