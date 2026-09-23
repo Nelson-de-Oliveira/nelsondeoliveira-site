@@ -8,10 +8,17 @@
 
   async function load(){
     const [p,t]=await Promise.all([
-      fetch(DATA,{cache:"no-store"}).then(r=>r.json()),
-      fetch(THEMES,{cache:"no-store"}).then(r=>r.json())
+      fetch(DATA + "?v=20260923",{cache:"no-store"}).then(r=>r.json()),
+      fetch(THEMES + "?v=20260923",{cache:"no-store"}).then(r=>r.json())
     ]);
-    return {posts:p,themes:t};
+    // O texto antigo "Centrauto" foi retirado do arquivo.
+    // Excluímo-lo também defensivamente, para impedir que versões antigas
+    // dos índices em cache voltem a mostrá-lo.
+    const posts=(Array.isArray(p)?p:[]).filter(x =>
+      String(x.title||"").trim().toLowerCase() !== "centrauto" &&
+      String(x.url||"").trim().toLowerCase() !== "/posts/centrauto.html"
+    );
+    return {posts,themes:Array.isArray(t)?t:[]};
   }
   function readLink(p){return '<a class="read-link" href="'+esc(p.url)+'">Ler →</a>'}
   function renderArchive(posts){
