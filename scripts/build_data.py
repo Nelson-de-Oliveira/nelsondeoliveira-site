@@ -95,6 +95,8 @@ urls = [
     "https://nelsondeoliveira.netlify.app/essenciais.html",
     "https://nelsondeoliveira.netlify.app/catalogo.html",
     "https://nelsondeoliveira.netlify.app/sobre.html",
+    "https://nelsondeoliveira.netlify.app/livro.html",
+    "https://nelsondeoliveira.netlify.app/publicacoes.html",
 ]
 urls += ["https://nelsondeoliveira.netlify.app/temas/" + t["slug"] + ".html" for t in themes]
 urls += ["https://nelsondeoliveira.netlify.app" + r["url"] for r in records]
