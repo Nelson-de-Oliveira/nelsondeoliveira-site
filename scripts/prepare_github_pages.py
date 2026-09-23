@@ -8,6 +8,7 @@ DIST = ROOT / "_pages"
 
 if DIST.exists():
     shutil.rmtree(DIST)
+DIST.mkdir(parents=True, exist_ok=True)
 
 IGNORE = {".git", ".github", "_pages", "__pycache__"}
 
@@ -20,6 +21,7 @@ def copy_tree(src: Path, dst: Path):
             target.mkdir(parents=True, exist_ok=True)
             copy_tree(item, target)
         else:
+            target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(item, target)
 
 copy_tree(ROOT, DIST)
