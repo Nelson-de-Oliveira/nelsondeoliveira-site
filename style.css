@@ -232,8 +232,8 @@ h2{
 }
 .theme-name{
   grid-column:1/-1;
-  font:700 15px/1.3 var(--sans);
-  color:#2c2925;
+  font:800 15px/1.3 var(--sans);
+  color:var(--accent);
 }
 .theme-count{
   font:700 42px/.9 var(--serif);
@@ -1315,4 +1315,11 @@ footer{
   .book-ideas{grid-template-columns:1fr}
   .book-final h2{font-size:39px}
   .social-post h2{font-size:31px}
+}
+
+
+/* Site navigation — removed sections */
+nav a[href$="evolucao.html"],
+nav a[href$="dialogos.html"]{
+  display:none;
 }
